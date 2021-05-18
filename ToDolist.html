@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="todo.css"> -->
+</head>
+
+<body>
+    <div class="container">
+        <br>
+        <div class="main"><b class="heading"><h2> Fix your schedule</h2></b>
+
+            <input type="text" id="task" placeholder="enter your goal">
+            <button id="submit">submitt</button>
+            <div id="val" style="color:red;"> </div>
+
+            <p id="show"></p>
+            <ul id="ul"></ul>
+
+        </div>
+    </div>
+    <style>
+        .container{
+    align-items: center;
+    box-shadow: rgb(12, 12, 12);
+    height: 10px;
+    border-color: rgb(40, 40, 192);
+    background-color: blueviolet;
+}
+body{
+    text-align: center;
+}
+.heading{
+    background-color: burlywood;
+    border-radius: 10px;
+}
+#task{
+    border-color: rgb(100, 113, 136);
+    margin: 60px 40px;
+    padding: 5px;
+}
+#submit{
+    background-color: darkcyan;
+    color: rgb(247, 243, 243);
+}
+#ul{
+    margin: 0px 670px;
+    background: antiquewhite;
+    text-align: center;
+}
+#val{
+    margin: -8px;
+}
+#submit{
+    margin: 56px 40px;
+}
+.clsStrike{
+    text-decoration: line-through;
+	}
+    </style>
+</body>
+<script>
+var count = 0;
+        var dlt = 0;
+    $(document).ready(function () {
+        
+        $('#submit').click(function () {
+
+            var input = $('#task').val();
+            var result = '<li class="li" onclick="addstrike(this)">' + input + '</li>';
+            $('#task').val("");
+
+            if (input.length != 0 ) {
+                count++
+                $('#show').html("your "+  dlt + " task done out of " + count)
+                $('#ul').append(result);
+                $(this).val();
+                text = " ";
+            }
+            else {
+                text = "*input not valid";
+            }
+            $('#val').html(text);
+            
+			}); 
+    });
+	function addstrike(e) {
+                
+                if ($(e).hasClass("clsStrike")) {
+                    $(e).removeClass("clsStrike");
+                    dlt--
+                }
+                else {
+                    $(e).addClass("clsStrike")
+                    dlt++
+                }
+                $('#show').html("your "+  dlt + " task done out of " + count)
+                
+            }
+</script>
+</html>
